@@ -1,0 +1,17 @@
+{% include 'includes/head.html' %}
+{% include 'includes/header.html' %}
+
+<section id="base" class="container">
+    <div class="row">
+        <div class="col-sm-offset-2 col-sm-5 text-center">
+            <h2>Events</h2>
+            <ul class="list-group" id="salons">
+                {% for event in events %}
+                    <li class="list-group-item"><a href="{{ url_for('event', id=event.id) }}">{{ event.name_mentor }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</section>
+
+{% include 'includes/footer.html' %}

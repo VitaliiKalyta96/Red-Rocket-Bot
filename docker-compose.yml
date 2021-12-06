@@ -1,0 +1,41 @@
+version: "3"
+
+services:
+  rr_app:
+    build:
+      context: ./
+      dockerfile: docker/Dockerfile
+    container_name: 'red_rocket_bot'
+    env_file:
+      - .env
+    volumes:
+      - .:/application
+    ports:
+      - "7070:7070"
+    networks:
+      - app
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    ports:
+      - "3310:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: events_data
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user
+    networks:
+      - app
+    volumes:
+      - db_data:/var/lib/mysql
+
+networks:
+  app:
+    driver: bridge
+
+volumes:
+  db_data:
