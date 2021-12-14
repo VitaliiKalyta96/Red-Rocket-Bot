@@ -1,8 +1,8 @@
 from app import app, db
 from flask import render_template, request, redirect, url_for
 from utils.helpers import convert_list
-from models import Event
-
+# from models import Event
+from models.models import Event
 
 @app.route('/')
 def main():

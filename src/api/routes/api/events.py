@@ -2,7 +2,7 @@ from flask import request
 from flask_restful import Resource
 
 from app import app, api, db
-from models import Event
+from models.models import Event
 from utils.helpers import convert_list
 
 

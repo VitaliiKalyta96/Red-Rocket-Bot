@@ -1,3 +1,4 @@
+# from app import db
 from app import db
 
 
@@ -12,7 +13,7 @@ class Event(db.Model):
         db.String(100),
         nullable=False
     )
-    
+
     date = db.Column(
         db.String(100),
         nullable=False

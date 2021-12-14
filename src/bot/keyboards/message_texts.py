@@ -1,0 +1,7 @@
+thank_for_number_text = ", thank you for contacting us.\nWe will contact you shortly."
+start_hello_text = "Hi! 👋\nI'm 🤖 RedRocketBot!\nWhat are you interested in?!"
+chose_events_text = "Chose event: "
+help_text = "Need help❓"
+subscribe_text = "You have successfully subscribed to the newsletter! 👍"
+unsubscribe_text_1 = "You are not subscribed anyway. 🔕"
+unsubscribe_text_2 = "You have successfully unsubscribed from the mailing list. 🔕"
