@@ -15,6 +15,7 @@ app.config['SESSION_COOKIE_HTTPONLY'] = True
 app.config["JWT_TOKEN_LOCATION"] = ["headers", "cookies", "json"]
 app.config["JWT_COOKIE_SECURE"] = False
 jwt_manager = JWTManager()
+
 with app.app_context():
     from routes.api import *
     from routes.main import *
