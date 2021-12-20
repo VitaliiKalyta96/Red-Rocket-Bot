@@ -5,6 +5,8 @@
 ## Setup
 ### Create local env
 - Create virtual env '**`virtualenv aiogram-env`**'
+- Install/upgrade virtual env '**` pip install --upgrade virtualenv `**'
+- Perform yet this command '**` virtualenv -p python3 aiogram-env `**'
 - Activate virtual env '**`source aiogram-env/bin/activate`**'
 
 #### Run project
