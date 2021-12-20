@@ -20,6 +20,7 @@ from dotenv import load_dotenv, find_dotenv
 
 import keyboards.keyboards as kb
 from keyboards.message_texts import *
+# from src.api import app
 from utils.database import *
 
 
