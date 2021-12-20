@@ -1,4 +1,3 @@
-# from app import db
 from app import db
 
 
@@ -9,17 +8,27 @@ class Event(db.Model):
         primary_key=True
     )
 
-    name_mentor = db.Column(
+    title = db.Column(
+        db.String(30),
+        nullable=False
+    )
+
+    description = db.Column(
         db.String(100),
         nullable=False
     )
 
-    date = db.Column(
+    date_time = db.Column(
+        db.String(30),
+        nullable=False
+    )
+
+    category = db.Column(
         db.String(100),
         nullable=False
     )
 
-    time = db.Column(
+    link = db.Column(
         db.String(100),
         nullable=False
     )
@@ -28,7 +37,35 @@ class Event(db.Model):
     def serialize(self):
         return {
             'id': self.id,
-            'name_mentor': self.name_mentor,
-            'date': self.date,
-            'time': self.time
+            'title': self.title,
+            'description': self.description,
+            'date_time': self.date_time,
+            'category': self.category,
+            'link': self.link,
+        }
+
+
+class Category(db.Model):
+    __tablename__ = "category"
+    id = db.Column(
+        db.Integer,
+        primary_key=True
+    )
+
+    title = db.Column(
+        db.String(30),
+        nullable=False
+    )
+
+    description = db.Column(
+        db.String(100),
+        nullable=False
+    )
+
+    @property
+    def serialize(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'description': self.description,
         }
