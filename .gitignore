@@ -1,5 +1,5 @@
 .idea/
 venv/
 __pycahe__/
-.env
-
+docker/envs/.env
+aiogram-env
