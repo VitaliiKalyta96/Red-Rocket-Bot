@@ -13,7 +13,8 @@ class EventResourse(Resource):
 
     def post(self):
         data = request.json
-        event = Event(name_mentor=data['name_mentor'], date=data['date'], time=data['time'])
+        event = Event(title=data['title'], description=data['description'],
+                      date_time=data['date_time'], category=data['category'], link=data['link'])
         db.session.add(event)
         db.session.commit()
         return event.serialize
@@ -28,9 +29,11 @@ class EventResourseID(Resource):
     def put(self, id):
         data = request.json
         event = Event.query.get(id)
-        event.name_mentor = data['name_mentor'] if data.get('name_mentor', False) else event.name_mentor
-        event.date = data['date'] if data.get('date', False) else event.date
-        event.time = data['time'] if data.get('time', False) else event.time
+        event.title = data['title'] if data.get('title', False) else event.title
+        event.description = data['description'] if data.get('description', False) else event.description
+        event.date_time = data['date_time'] if data.get('date_time', False) else event.date_time
+        event.category = data['category'] if data.get('category', False) else event.category
+        event.link = data['link'] if data.get('link', False) else event.link
         db.session.add(event)
         db.session.commit()
         return event.serialize
