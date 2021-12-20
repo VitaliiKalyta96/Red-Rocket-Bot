@@ -1,34 +1,56 @@
-# from app import db
-from app import db
+from src.api.app import db
+from datetime import datetime
 
 
-class Event(db.Model):
-    __tablename__ = "events"
+class User(db.Model):
+    """Data model for user accounts."""
+    __tablename__ = 'users'
+    __table_args__ = {'extend_existing': True}
     id = db.Column(
         db.Integer,
         primary_key=True
     )
-
-    name_mentor = db.Column(
-        db.String(100),
+    username = db.Column(
+        db.String(64),
+        index=False,
+        unique=True,
         nullable=False
     )
-
-    date = db.Column(
-        db.String(100),
+    password = db.Column(
+        db.String(200),
+        unique=False,
         nullable=False
     )
-
-    time = db.Column(
-        db.String(100),
+    email = db.Column(
+        db.String(80),
+        index=True,
+        unique=True,
         nullable=False
     )
+    created = db.Column(
+        db.DateTime,
+        default=datetime.utcnow,
+        index=False,
+        unique=False,
+        nullable=False,
+
+    )
+
+    admin = db.Column(
+        db.Boolean,
+        index=False,
+        unique=False,
+        default=False
+    )
+
+    def __repr__(self):
+        return '<User {}>'.format(self.username)
 
     @property
     def serialize(self):
         return {
-            'id': self.id,
-            'name_mentor': self.name_mentor,
-            'date': self.date,
-            'time': self.time
+            "id": self.id,
+            "username": self.username,
+            "email": self.email
+
         }

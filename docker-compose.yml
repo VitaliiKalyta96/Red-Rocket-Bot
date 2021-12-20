@@ -38,11 +38,8 @@ services:
     restart: always
     ports:
       - "3311:3306"
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: events_data
-      MYSQL_USER: user
-      MYSQL_PASSWORD: user
+    env_file:
+      - ./docker/envs/.env
     cap_add:
       - SYS_NICE  # CAP_SYS_NICE
     networks:

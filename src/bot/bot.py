@@ -27,7 +27,7 @@ from utils.database import *
 
 # API_TOKEN = os.getenv('api_token')
 # TODO: fix it
-app.config.from_object("config.Config")
+# app.config.from_object("config.Config")
 API_TOKEN = ''
 
 # Configure logging
