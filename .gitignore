@@ -2,4 +2,5 @@
 venv/
 __pycahe__/
 docker/envs/.env
+
 aiogram-env
