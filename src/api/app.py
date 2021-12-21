@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_restful import Api
 from flask_migrate import Migrate
 
+
 app = Flask(__name__)
 api = Api(app)
 db = SQLAlchemy()
@@ -19,8 +20,8 @@ jwt_manager = JWTManager()
 with app.app_context():
     from routes.api import *
     from routes.main import *
-    from models import User
     from auth import *
+    from models import User, Event, Category
 
 
 if __name__ == '__main__':
