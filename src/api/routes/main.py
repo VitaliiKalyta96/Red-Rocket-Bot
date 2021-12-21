@@ -1,8 +1,20 @@
+from src.api.app import app
+from src.api.utils.helpers import  token_required
 from app import app, db
 from flask import render_template, request, redirect, url_for
 from utils.helpers import convert_list
-# from models import Event
 from models.models import Event
+
+
+@app.route('/test', methods=['GET'])
+@token_required
+def test():
+    return "Authorized"
+
+
+@app.route('/notest', methods=['GET'])
+def notest():
+    return "No need off Authorization"
 
 
 @app.route('/')
