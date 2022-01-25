@@ -1,3 +1,5 @@
+import uuid
+
 from src.api.app import db
 from datetime import datetime
 
@@ -125,4 +127,54 @@ class Category(db.Model):
             'id': self.id,
             'title': self.title,
             'description': self.description,
+        }
+
+class Certificate(db.Model):
+    """Data model for user accounts."""
+    tablename = 'certificates'
+    table_args = {'extend_existing': True}
+    id = db.Column(
+        db.Integer,
+        primary_key=True
+    )
+    public_id = db.Column(
+        db.String,
+        default=lambda: str(uuid.uuid4())[:8],
+        unique=True)
+
+    title = db.Column(
+        db.String(200),
+        nullable=False
+    )
+
+    description = db.Column(
+        db.String(255),
+        nullable=False
+    )
+
+    owner = db.Column(
+        db.String(120),
+        nullable=False
+    )
+
+    mentor = db.Column(
+        db.String(120),
+        nullable=False
+    )
+
+    date = db.Column(
+        db.String(30),
+        nullable=False
+    )
+
+    @property
+    def serialize(self):
+        return {
+            'public_id': self.public_id,
+            'title': self.title,
+            'description': self.description,
+            'owner': self.owner,
+            'mentor': self.mentor,
+            'date': self.date,
+
         }
