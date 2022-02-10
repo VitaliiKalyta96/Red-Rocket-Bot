@@ -12,21 +12,6 @@ def test():
     return "Authorized"
 
 
-# Run AssertionError: View function mapping is overwriting an existing endpoint function: notest
-"""TODO fix."""
-# @app.route('/notest', methods=['GET'])
-# def notest():
-#     return "No need off Authorization"
-
-
-#  Run AssertionError: View function mapping is overwriting an existing endpoint function: test
-"""TODO fix."""
-# @app.route('/test', methods=['GET'])
-# @token_required
-# def test():
-#     return "Authorized"
-
-
 @app.route('/notest', methods=['GET'])
 def notest():
     return "No need off Authorization"
@@ -35,7 +20,7 @@ def notest():
 @app.route('/')
 def main():
     events = Event.query.all()
-    return render_template('', events=events)
+    return ('')
 
 
 @app.route('/event/<int:id>')
