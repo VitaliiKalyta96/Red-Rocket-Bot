@@ -19,7 +19,4 @@ Installing and running this app is very simple.
 and then simply run:
 
 ``` docker-compose up --build (use -d flag to run it in the background) ```
-
-
-
-Further updates to the project will are expected later.
+.
