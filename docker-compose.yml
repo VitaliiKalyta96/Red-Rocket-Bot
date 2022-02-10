@@ -1,17 +1,32 @@
-version: "3"
+version: "3.7"
 
 services:
   rr_app:
     build:
-      context: ./
-      dockerfile: docker/Dockerfile
-    container_name: 'red_rocket_bot'
-    env_file:
-      - .env
+      context: .
+      dockerfile: ./docker/containers/api.Dockerfile
+    container_name: 'rr_app'
     volumes:
       - .:/application
+    env_file:
+        - ./docker/envs/.env
     ports:
-      - "7070:7070"
+      - "7072:7070"
+    networks:
+      - app
+    depends_on:
+      - db
+
+  bot:
+    build:
+      context: .
+      dockerfile: docker/containers/bot.Dockerfile
+    container_name: 'rr_bot-1'
+    env_file: ./docker/envs/.env
+    volumes:
+      - .:/application
+#    ports:
+#      -
     networks:
       - app
     depends_on:
@@ -22,12 +37,11 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     ports:
-      - "3310:3306"
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: events_data
-      MYSQL_USER: user
-      MYSQL_PASSWORD: user
+      - "3311:3306"
+    env_file:
+      - ./docker/envs/.env
+    cap_add:
+      - SYS_NICE  # CAP_SYS_NICE
     networks:
       - app
     volumes:
