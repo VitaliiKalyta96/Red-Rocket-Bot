@@ -1,1 +1,1 @@
-from .models import User, Event, Category
+from .models import User, Event, Category, Certificate
