@@ -131,8 +131,8 @@ class Category(db.Model):
 
 class Certificate(db.Model):
     """Data model for user accounts."""
-    tablename = 'certificates'
-    table_args = {'extend_existing': True}
+    __tablename__ = 'certificates'
+    __table_args__ = {'extend_existing': True}
     id = db.Column(
         db.Integer,
         primary_key=True
@@ -176,5 +176,4 @@ class Certificate(db.Model):
             'owner': self.owner,
             'mentor': self.mentor,
             'date': self.date,
-
         }
