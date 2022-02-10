@@ -21,7 +21,7 @@ with app.app_context():
     from routes.api import *
     from routes.main import *
     from auth import *
-    from models import User, Event, Category
+    from models import User, Event, Category, Certificate
 
 
 if __name__ == '__main__':
